@@ -6,12 +6,13 @@ public class PlayerController : MonoBehaviour {
 	public float movementSpeed = 20.0f;
 	public float accelerateThreshold = 50.0f;
 
+	public Vector3 accelVector;
 	public float movementThreshold = 20.0f;
 	public float forwardSpeed = 0.0f;
 	public float leftRightSpeed = 0.0f;
 	public float deccelerateScale = 2f;
 	public float speedThreshold = 10.0f;
-	public bool wasSpeedChanged = false;
+	public bool isAccelerate = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,20 +20,29 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		forwardSpeed = Input.GetAxis ("Vertical") * movementSpeed;
-		leftRightSpeed = Input.GetAxis ("Horizontal") * movementSpeed;
+			forwardSpeed = Input.GetAxis ("Vertical") * movementSpeed;
+			leftRightSpeed = Input.GetAxis ("Horizontal") * movementSpeed;
 
-		Vector3 movement = new Vector3 (leftRightSpeed, 0, forwardSpeed);
-		CharacterController cc = GetComponent<CharacterController> ();
-		cc.SimpleMove (movement);
+			Vector3 movement = new Vector3 (leftRightSpeed, 0, forwardSpeed) + accelVector;
 
-		if(movementSpeed > movementThreshold)
-			movementSpeed -= Time.deltaTime * deccelerateScale;
+			CharacterController cc = GetComponent<CharacterController> ();
+			//rigidbody.velocity = movement;
+			cc.SimpleMove (movement);
 
-		if (movementSpeed < movementThreshold)
-			movementSpeed += Time.deltaTime * deccelerateScale;
+			if (movementSpeed > movementThreshold)
+					movementSpeed -= Time.deltaTime * deccelerateScale;
 
-		if(Math.Abs(movementSpeed - movementThreshold) < .025)
-			movementSpeed = movementThreshold;
+			if (movementSpeed < movementThreshold)
+					movementSpeed += Time.deltaTime * deccelerateScale;
+
+			if (Math.Abs (movementSpeed - movementThreshold) < .025) {
+					movementSpeed = movementThreshold;
+
+			}
+		}
+
+	public void accelerate(Vector3 a)
+	{
+		accelVector = a;
 	}
 }

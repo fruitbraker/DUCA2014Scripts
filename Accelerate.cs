@@ -2,13 +2,12 @@
 using System.Collections;
 
 public class Accelerate : MonoBehaviour {
-	public float accelerateScale = 10.0f;
-	public PlayerController pc;
+	public float accelerateScale = 1000.0f;
 	// Use this for initialization
 	void Start () {
-	
+		print (transform.forward.ToString ());
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -16,8 +15,7 @@ public class Accelerate : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		if (other.gameObject.tag == "Player") {
-			pc = other.gameObject.GetComponent<PlayerController>();
-			pc.movementSpeed = pc.accelerateThreshold;
+			other.gameObject.GetComponent<PlayerController>().accelerate(transform.forward * accelerateScale);
 		}
 	}
 }
