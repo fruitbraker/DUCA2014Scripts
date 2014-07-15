@@ -13,7 +13,7 @@ public class Accelerate : MonoBehaviour {
 		
 	}
 
-	void OnTriggerStay(Collider other) {
+	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Player") {
 			other.gameObject.GetComponent<PlayerController>().accelerate(transform.forward * accelerateScale);
 		}
