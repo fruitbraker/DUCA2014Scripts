@@ -41,8 +41,15 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-	public void accelerate(Vector3 a)
-	{
+	public void accelerate(Vector3 a) {
+		CharacterController cc = GetComponent<CharacterController> ();
+		cc.slopeLimit = 180;
 		accelVector = a;
+	}
+
+	public void defaultSlope() {
+		CharacterController cc = GetComponent<CharacterController> ();
+		cc.slopeLimit = 45;
+		//accelVector = Vector3(0, 0, 0);
 	}
 }
