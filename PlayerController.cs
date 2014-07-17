@@ -5,7 +5,7 @@ using System;
 public class PlayerController : MonoBehaviour {
 	public float movementSpeed;
 	public float movementThreshold;
-	public float deccelerateScale = 5.0f;
+	public float deccelerateScale;
 
 	void Start() {
 		movementThreshold = movementSpeed;
@@ -17,8 +17,10 @@ public class PlayerController : MonoBehaviour {
 		float leftRight = Input.GetAxisRaw ("Horizontal");
 		float forward = Input.GetAxisRaw ("Vertical");
 
-		Vector3 movement = new Vector3 (leftRight, 0.0f, forward);
+		Vector3 movement = transform.forward * forward;
+		//Vector3 movement = new Vector3 (0.0f, 0.0f, 0.0f);
 
+		transform.Rotate(Vector3.up * leftRight);
 		rigidbody.AddForce (movement * movementSpeed * Time.deltaTime);
 
 		if (movementSpeed < movementThreshold)
