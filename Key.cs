@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KeyandDoor : MonoBehaviour {
+public class Key : MonoBehaviour {
 	public GameObject door;
+	public GameObject key;
 	// Use this for initialization
 	void Start () {
 	
@@ -13,9 +14,8 @@ public class KeyandDoor : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collision other) {
+	void OnTriggerEnter(Collider other) {
 		Destroy (door);
-		Destroy (other.gameObject);
+		Destroy (key);
 	}
-
 }
