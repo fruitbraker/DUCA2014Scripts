@@ -15,7 +15,9 @@ public class Key : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		Destroy (door);
-		Destroy (key);
+		if(other.gameObject.tag == "Player") {
+			Destroy (door);
+			Destroy (key);
+		}
 	}
 }
