@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class UpDownPlatform : MonoBehaviour {
+	//This script will affect the Y axis
 	public float heightCap;
 	public float bottomCap;
 	public float platformSpeed;
