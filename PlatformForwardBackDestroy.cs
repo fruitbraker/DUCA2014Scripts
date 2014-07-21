@@ -12,10 +12,16 @@ public class PlatformForwardBackDestroy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+	}
+
+	void OnTriggerStay(Collider other) {
 		//This will affect the Z axis
-		if(isForward)
-			transform.Translate (Vector3.forward * Time.deltaTime * platformSpeed);
-		if(!isForward)
-			transform.Translate (Vector3.back * Time.deltaTime * platformSpeed);
+		if(other.gameObject.tag == "Player") {
+			if(isForward)
+				transform.Translate (Vector3.forward * Time.deltaTime * platformSpeed);
+			if(!isForward)
+				transform.Translate (Vector3.back * Time.deltaTime * platformSpeed);
+		}
 	}
 }

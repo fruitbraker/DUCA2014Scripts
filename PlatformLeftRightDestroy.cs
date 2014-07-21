@@ -12,10 +12,16 @@ public class PlatformLeftRightDestroy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+	}
+
+	void OnTriggerStay(Collider other) {
 		//This will affect the X axis
-		if(isRight)
-			transform.Translate (Vector3.right * Time.deltaTime * platformSpeed);
-		if(!isRight)
-			transform.Translate (Vector3.left * Time.deltaTime * platformSpeed);
+		if(other.gameObject.tag == "Player") {
+			if(isRight)
+				transform.Translate (Vector3.right * Time.deltaTime * platformSpeed);
+			if(!isRight)
+				transform.Translate (Vector3.left * Time.deltaTime * platformSpeed);
+		}
 	}
 }
