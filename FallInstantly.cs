@@ -15,9 +15,14 @@ public class FallInstantly : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 		if(other.gameObject.tag == "Player") {
-			print ("HCEE");
-			other.gameObject.GetComponent<PlayerController>().rigidbody.AddForce(transform.up * 
-			                           other.gameObject.GetComponent<PlayerController>().movementSpeed * -2);
+			//other.gameObject.GetComponent<PlayerController>().rigidbody.AddForce(transform.up * 
+			//                           other.gameObject.GetComponent<PlayerController>().movementSpeed * -.25f);
+			Physics.gravity = new Vector3(0,-100f,0);
 		}
+	}
+
+	void OnTriggerExit(Collider other) {
+		if(other.gameObject.tag == "Player")
+			Physics.gravity = new Vector3(0, -9.8f, 0);
 	}
 }
