@@ -12,6 +12,7 @@ public class PlatformUpDownDestroy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//This will affect the Y axis
 		if(isUp)
 			transform.Translate (Vector3.up * Time.deltaTime * platformSpeed);
 		if(!isUp)
