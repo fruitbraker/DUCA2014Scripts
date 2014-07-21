@@ -13,6 +13,7 @@ public class PlatformSpawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//This will affect the Y axis
 		if(platform.transform.position.y > heightCap && isUp) {
 			platform.transform.position = platformSpawn.transform.position;
 		}
