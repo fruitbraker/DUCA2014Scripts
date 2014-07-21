@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 	public float movementSpeed;
 	public float movementThreshold;
 	public float deccelerateScale;
+	public float respawnThreshold;
+	public GameObject characterRespawn;
 
 	void Start() {
 		movementThreshold = movementSpeed;
@@ -30,6 +32,9 @@ public class PlayerController : MonoBehaviour {
 			movementSpeed = movementThreshold;
 			
 		}
+
+		if(transform.position.y < respawnThreshold)
+			transform.position = characterRespawn.transform.position;
 
 	}
 
