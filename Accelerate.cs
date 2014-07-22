@@ -13,7 +13,7 @@ public class Accelerate : MonoBehaviour {
 			other.gameObject.GetComponent<PlayerController>().rigidbody.velocity = Vector3.zero;
 			other.gameObject.transform.position = transform.position;
 			other.gameObject.GetComponent<PlayerController>().rigidbody.AddForce(transform.right *
-			                other.gameObject.GetComponent<PlayerController>().movementSpeed * .5f);
+			                other.gameObject.GetComponent<PlayerController>().movementSpeed * .4f);
 		}
 	}
 }
