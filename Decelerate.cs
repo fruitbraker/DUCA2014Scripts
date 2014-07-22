@@ -12,7 +12,7 @@ public class Decelerate : MonoBehaviour {
 	
 	void OnTriggerStay(Collider other) {
 		if (other.gameObject.tag == "Player") {
-			other.gameObject.GetComponent<PlayerController>().movementSpeed = 2500f;
+			other.gameObject.GetComponent<PlayerController>().movementSpeed = other.gameObject.GetComponent<PlayerController>().deccelerateScale;
 		}
 	}
 }
