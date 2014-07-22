@@ -4,25 +4,29 @@ using System;
 
 public class PlayerController : MonoBehaviour {
 	public float movementSpeed;
+	public float turnSpeed;
 	public float movementThreshold;
 	public float deccelerateScale;
 	public float respawnThreshold;
 	public GameObject characterRespawn;
-
 	void Start() {
 		movementThreshold = movementSpeed;
-		//Physics.gravity = new Vector3(0,-100,0);
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		float leftRight = Input.GetAxisRaw ("Horizontal");
+		float leftRight = Input.GetAxisRaw ("Horizontal") * turnSpeed;
 		float forward = Input.GetAxisRaw ("Vertical");
 
 		Vector3 movement = transform.forward * forward;
-		//Vector3 movement = new Vector3 (0.0f, 0.0f, 0.0f);
 
 		transform.Rotate(Vector3.up * leftRight);
+
+		if(transform.position.y < respawnThreshold) {
+			movement = Vector3.zero;
+			transform.position = characterRespawn.transform.position;
+		}
+
 		rigidbody.AddForce (movement * movementSpeed * Time.deltaTime);
 
 		if (movementSpeed < movementThreshold)
@@ -32,10 +36,6 @@ public class PlayerController : MonoBehaviour {
 			movementSpeed = movementThreshold;
 			
 		}
-
-		if(transform.position.y < respawnThreshold)
-			transform.position = characterRespawn.transform.position;
-
 	}
 
 	public void defaultSlope() {
