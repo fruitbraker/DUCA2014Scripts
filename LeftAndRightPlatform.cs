@@ -9,8 +9,8 @@ public class LeftAndRightPlatform : MonoBehaviour {
 	private bool shouldGoLeft;
 	// Use this for initialization
 	void Start () {
-		rightCap += transform.position.x;
-		leftCap += transform.position.x;
+		//rightCap += transform.position.x;
+		//leftCap += transform.position.x;
 	}
 	
 	// Update is called once per frame

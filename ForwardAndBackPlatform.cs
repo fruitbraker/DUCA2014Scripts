@@ -9,8 +9,8 @@ public class ForwardAndBackPlatform : MonoBehaviour {
 	private bool shouldGoBack;
 	// Use this for initialization
 	void Start () {
-		forwardCap += transform.position.z;
-		backCap += transform.position.z;
+		//forwardCap += transform.position.z;
+		//backCap += transform.position.z;
 	}
 	
 	// Update is called once per frame

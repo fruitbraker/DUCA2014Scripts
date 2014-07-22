@@ -9,8 +9,8 @@ public class UpDownPlatform : MonoBehaviour {
 	private bool shouldGoDown;
 	// Use this for initialization
 	void Start () {
-		heightCap += transform.position.y;
-		bottomCap += transform.position.y;
+		//heightCap += transform.position.y;
+		//bottomCap += transform.position.y;
 	}
 	
 	// Update is called once per frame
