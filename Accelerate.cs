@@ -10,8 +10,10 @@ public class Accelerate : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Player") {
-			other.gameObject.GetComponent<PlayerController>().rigidbody.AddForce(other.gameObject.transform.up * -1 *
-			              other.gameObject.GetComponent<PlayerController>().movementSpeed * 2000);
+			other.gameObject.GetComponent<PlayerController>().rigidbody.velocity = Vector3.zero;
+			other.gameObject.transform.position = transform.position;
+			other.gameObject.GetComponent<PlayerController>().rigidbody.AddForce(transform.right *
+			                other.gameObject.GetComponent<PlayerController>().movementSpeed * .5f);
 		}
 	}
 }
