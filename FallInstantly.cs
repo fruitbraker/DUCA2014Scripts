@@ -17,7 +17,7 @@ public class FallInstantly : MonoBehaviour {
 		if(other.gameObject.tag == "Player") {
 			//other.gameObject.GetComponent<PlayerController>().rigidbody.AddForce(transform.up * 
 			//                           other.gameObject.GetComponent<PlayerController>().movementSpeed * -.25f);
-			Physics.gravity = new Vector3(0,-100f,0);
+			Physics.gravity = new Vector3(0,-75f,0);
 		}
 	}
 
