@@ -31,8 +31,7 @@ public class Teleporter : MonoBehaviour {
 			if (other.gameObject.tag == "Player") {
 				Vector3 targetPosition = (target.transform.position);
 				print (target.transform.position.y);
-				targetPosition.y += 5.3f;
-				targetPosition.z += 11.3f;
+
 				other.gameObject.transform.position = targetPosition;
 			}
 		}
