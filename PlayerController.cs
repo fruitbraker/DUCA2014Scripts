@@ -24,7 +24,9 @@ public class PlayerController : MonoBehaviour {
 
 		if(transform.position.y < respawnThreshold) {
 			movement = Vector3.zero;
+			rigidbody.velocity = Vector3.zero;
 			transform.position = characterRespawn.transform.position;
+
 		}
 
 		rigidbody.AddForce (movement * movementSpeed * Time.deltaTime);
