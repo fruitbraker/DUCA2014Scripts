@@ -9,14 +9,22 @@ public class PlayerController : MonoBehaviour {
 	public float deccelerateScale;
 	public float respawnThreshold;
 	public GameObject characterRespawn;
+	private float leftRight;
+	private float forward;
 	void Start() {
 		movementThreshold = movementSpeed;
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		float leftRight = Input.GetAxisRaw ("Horizontal") * turnSpeed;
-		float forward = Input.GetAxisRaw ("Vertical");
+
+		if(SystemInfo.deviceType == DeviceType.Handheld) {
+			leftRight = Mathf.Clamp(Input.acceleration.x *3f, -1, 1);
+			forward = Mathf.Clamp(Input.acceleration.y *3f, -1, 1);
+		} else {
+			leftRight = Input.GetAxisRaw ("Horizontal") * turnSpeed;
+			forward = Input.GetAxisRaw ("Vertical");
+		}
 
 		Vector3 movement = transform.forward * forward;
 
