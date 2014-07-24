@@ -5,11 +5,11 @@ public class Accelerate : MonoBehaviour {
 	public bool isLevel5;
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Player") {
+			other.gameObject.GetComponent<PlayerController>().PlaySound(4);
 			if(isLevel5){
 				other.gameObject.GetComponent<PlayerController>().rigidbody.velocity = Vector3.zero;
 				other.gameObject.transform.position = transform.position;
@@ -18,4 +18,5 @@ public class Accelerate : MonoBehaviour {
 			                other.gameObject.GetComponent<PlayerController>().movementSpeed * .4f);
 		}
 	}
+
 }

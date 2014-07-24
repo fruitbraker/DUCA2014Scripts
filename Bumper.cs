@@ -12,6 +12,7 @@ public class Bumper : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if(other.gameObject.tag == "Player") {
+			other.gameObject.GetComponent<PlayerController>().PlaySound(3);
 			if(Input.GetAxisRaw("Vertical") == 1) {
 				other.gameObject.GetComponent<PlayerController>().rigidbody.AddForce(other.gameObject.transform.forward * -1 * 
 			                                         other.gameObject.GetComponent<PlayerController>().movementSpeed * 2f);

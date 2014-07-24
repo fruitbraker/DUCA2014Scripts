@@ -29,6 +29,7 @@ public class Teleporter : MonoBehaviour {
 	void teleport() {
 		if(isTeleporting) {
 			if (other.gameObject.tag == "Player") {
+				other.gameObject.GetComponent<PlayerController>().PlaySound(0);
 				Vector3 targetPosition = (target.transform.position);
 				print (target.transform.position.y);
 

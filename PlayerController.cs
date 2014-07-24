@@ -3,14 +3,17 @@ using System.Collections;
 using System;
 
 public class PlayerController : MonoBehaviour {
+	public static bool isDead;
 	public float movementSpeed;
 	public float turnSpeed;
 	public float movementThreshold;
 	public float deccelerateScale;
 	public float respawnThreshold;
+	public AudioClip[] audioClip;
 	public GameObject characterRespawn;
 	private float leftRight;
 	private float forward;
+
 	void Start() {
 		movementThreshold = movementSpeed;
 	}
@@ -31,10 +34,11 @@ public class PlayerController : MonoBehaviour {
 		transform.Rotate(Vector3.up * leftRight);
 
 		if(transform.position.y < respawnThreshold) {
+			PlaySound(5);
+			MasterResetter.shouldReset = true;
 			movement = Vector3.zero;
 			rigidbody.velocity = Vector3.zero;
 			transform.position = characterRespawn.transform.position;
-
 		}
 
 		rigidbody.AddForce (movement * movementSpeed * Time.deltaTime);
@@ -51,5 +55,10 @@ public class PlayerController : MonoBehaviour {
 	public void defaultSlope() {
 		CharacterController cc = GetComponent<CharacterController> ();
 		cc.slopeLimit = 45;
+	}
+
+	public void PlaySound(int index) {
+		audio.clip = audioClip [index];
+		audio.Play();
 	}
 }
